@@ -17,4 +17,9 @@ func KToC(k Kelvin) Celsius { return Celsius(k - 273.15) }
 
 func CToK(c Celsius) Kelvin { return Kelvin(c + 273.25) }
 
+func Foot2Meter(f Foot) Meter     { return Meter(0.3048 * f) }
+func Meter2Foot(m Meter) Foot     { return Foot(3.2808 * m) }
+func Kilo2Pound(k Kilogram) Pound { return Pound(2.2046 * k) }
+func Pound2Kilo(p Pound) Kilogram { return Kilogram(0.4535 * p) }
+
 //!-
