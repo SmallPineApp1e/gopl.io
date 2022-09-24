@@ -27,6 +27,8 @@ func main() {
 		fmt.Printf("comma recursion\t%s\n", comma(os.Args[i]))
 		fmt.Printf("comma loop\t%s\n", comma_loop(os.Args[i]))
 	}
+	s_a, s_b := "abcd", "dcae"
+	fmt.Printf("str_a: %s str_b: %s similar: %t\n", s_a, s_b, isSimilarString(s_a, s_b))
 }
 
 // !+
@@ -70,6 +72,27 @@ func max(a, b int) int {
 		return a
 	}
 	return b
+}
+
+// practice3.12
+// Return true if two string have same character, not care about sequence
+func isSimilarString(a, b string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	memo := [255]byte{}
+	bytes_a, bytes_b := []byte(a), []byte(b)
+	for i := range bytes_a {
+		memo[bytes_a[i]] += 1
+	}
+	for i := range bytes_b {
+		if memo[bytes_b[i]] > 0 {
+			memo[bytes_b[i]] -= 1
+		} else {
+			return false
+		}
+	}
+	return true
 }
 
 //!-
