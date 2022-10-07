@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	width, height = 600, 320            // canvas size in pixels
+	width, height = 1280, 720           // canvas size in pixels
 	cells         = 100                 // number of grid cells
 	xyrange       = 30.0                // axis ranges (-xyrange..+xyrange)
 	xyscale       = width / 2 / xyrange // pixels per x or y unit
@@ -76,7 +76,16 @@ func corner(i, j int) (bool, float64, float64) {
 
 func f(x, y float64) float64 {
 	r := math.Hypot(x, y) // distance from (0,0)
+	// return water(x, y, r)
+	return egg(x, y, r)
+}
+
+func water(x, y, r float64) float64 {
 	return math.Sin(r) / r
+}
+
+func egg(x, y, r float64) float64 {
+	return math.Pow(2, math.Sin(x)) * math.Pow(2, math.Sin(y)) / 12
 }
 
 //!-
